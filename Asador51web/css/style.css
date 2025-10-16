@@ -1,0 +1,690 @@
+/* ========================================
+   IMÁGENES DEL MENÚ DESTACADO Y PLATILLOS
+   ======================================== */
+#menu-imagen-destacada .card-img-top,
+.menu-platillo-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  background: #222;
+  transition: box-shadow 0.3s;
+}
+
+#menu-imagen-destacada .card-img-top:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+}
+
+.menu-platillo-selectable {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.menu-platillo-selectable:hover, .menu-platillo-selectable.active {
+  background: rgba(230,108,44,0.08);
+  border-radius: 10px;
+}
+
+/* Reutilizar estilos para la imagen del Bar */
+#bar-imagen, #bar-imagen-destacada .card-img-top {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  background: #222;
+}
+
+#bar-imagen:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+}
+
+/* Asegurar que los items del Bar usan el mismo cursor y hover */
+#bar-seccion .menu-platillo-selectable { cursor: pointer; }
+
+/* Dos columnas de precio para items del Bar */
+.bar-item-prices { display: flex; gap: 12px; align-items: center; }
+.bar-item-prices .menu-price { display: inline-block; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,0.03); color: var(--text-light); }
+.bar-item-prices .menu-price.glass { background: rgba(233, 227, 227, 0.02); color: var(--text-muted); }
+
+/* Panel destacado - precios */
+.bar-prices { justify-content: flex-start; }
+.bar-prices strong { color: var(--text-light); }
+
+/* Encabezado de lista del Bar (Botella / Copa) */
+.bar-list-header { padding: 6px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.bar-list-header > div:last-child { min-width: 140px; display:flex; justify-content:flex-end; }
+.bar-list-header div { opacity: 0.9; }
+
+/* ========================================
+   PESTAÑAS DE MENÚ (NAV-TABS)
+   ======================================== */
+.nav-tabs .nav-link {
+  color: var(--brand-primary);
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  transition: color 0.3s;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  color: var(--text-light);
+  background: var(--brand-primary);
+  border-radius: 8px 8px 0 0;
+}
+/* ========================================
+   VARIABLES DE COLORES Y CONFIGURACIÓN
+   ======================================== */
+:root {
+  /* REEMPLAZAR_AQUI: Colores de marca */
+  --brand-primary: #e66c2c;
+  --brand-secondary: #f1a661;
+  --brand-accent: #d05f26;
+  
+  /* Colores de fondo */
+  --bg-dark: #0e0f12;
+  --bg-card: #151820;
+  --bg-footer: #0a0b0e;
+  
+  /* Colores de texto */
+  --text-light: #ffffff;
+  --text-muted: #99a3b3;
+  --text-dark: #333333;
+  
+  /* Espaciado */
+  --section-padding: 80px;
+  --border-radius: 14px;
+  --border-radius-sm: 10px;
+}
+
+/* ========================================
+   ESTILOS GENERALES
+   ======================================== */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--brand-primary);
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.navbar-custom {
+  background: rgba(16, 17, 18, 0.96) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-logo {
+  height: 115px;
+  width: 115px;
+  border-radius: 8px;
+  background-color: aliceblue;
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  padding: 8px 12px !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--brand-primary) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-brand {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--text-light);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-brand:hover {
+  background-color: var(--brand-accent);
+  border-color: var(--brand-accent);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero {
+  min-height: 110vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 145px;
+  
+  /* REEMPLAZAR_AQUI: Cambia la imagen de fondo */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(14, 15, 18, 0.8)), 
+              url('https://i0.wp.com/gentleman.com.mx/wp-content/uploads/2025/02/asador-3.jpeg?fit=1280%2C853&ssl=1') center/cover no-repeat;
+}
+
+.hero-title {
+  color: var(--text-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons .btn {
+  margin: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   SECCIONES
+   ======================================== */
+.section-padding {
+  padding: var(--section-padding) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+  color: var(--brand-primary);
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+   TARJETAS
+   ======================================== */
+.card-custom {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(230, 108, 44, 0.2);
+  border-color: rgba(230, 108, 44, 0.3);
+}
+
+.card-custom .card-body {
+  color: var(--text-light);
+  padding: 1.5rem;
+}
+
+.card-custom .card-title {
+  color: var(--brand-secondary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.card-custom .card-text {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.card-custom .card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.card-custom:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   IMÁGENES DE TARJETAS - QUIENES SOMOS
+   ======================================== */
+/* Configuración específica para las tarjetas de la sección "Quienes somos" */
+#quienes-somos .card-custom .card-img-top {
+  height: 480px;
+  width: 100%;
+  background-color: #dee2e7;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.95) contrast(1.1) saturate(1.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Efectos hover específicos para imágenes de "Quienes somos" */
+#quienes-somos .card-custom:hover .card-img-top {
+  transform: scale(1.08) translateY(-2px);
+  filter: brightness(1.05) contrast(1.15) saturate(1.3);
+  box-shadow: 0 8px 35px rgba(230, 108, 44, 0.25);
+}
+
+/* Overlay sutil para mejorar legibilidad del texto */
+#quienes-somos .card-custom .card-img-top::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  transition: opacity 0.3s ease;
+}
+
+#quienes-somos .card-custom:hover .card-img-top::after {
+  opacity: 0.7;
+}
+
+/* Configuraciones específicas por tarjeta */
+/* Tarjeta "Nuestra historia" - Imagen con tono cálido */
+#quienes-somos .col-md-4:nth-child(1) .card-img-top {
+  filter: brightness(0.9) contrast(1.2) saturate(1.1) sepia(0.1);
+}
+
+/* Tarjeta "El arte del fuego" - Imagen con énfasis en rojos/naranjas */
+#quienes-somos .col-md-4:nth-child(2) .card-img-top {
+  filter: brightness(0.95) contrast(1.15) saturate(1.3) hue-rotate(-5deg);
+}
+
+/* Tarjeta "Ambiente que invita a quedarse" - Imagen con tono acogedor */
+#quienes-somos .col-md-4:nth-child(3) .card-img-top {
+  filter: brightness(1.0) contrast(1.1) saturate(1.15) warmth(1.1);
+}
+
+/* Responsive para imágenes de tarjetas */
+@media (max-width: 768px) {
+  #quienes-somos .card-custom .card-img-top {
+    height: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  #quienes-somos .card-custom .card-img-top {
+    height: 200px;
+  }
+  
+  #quienes-somos .card-custom:hover .card-img-top {
+    transform: scale(1.03) translateY(-1px);
+  }
+}
+
+/* ========================================
+   MENÚ
+   ======================================== */
+.menu-item {
+  background-color: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-sm);
+  padding: 20px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(21, 24, 32, 0.8);
+  border-color: var(--brand-primary);
+  transform: translateX(5px);
+}
+
+.menu-price {
+  color: var(--brand-secondary);
+  font-weight: 700;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.menu-item h6 {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.menu-item .text-muted {
+  color: var(--text-muted) !important;
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   CARRUSEL DE PROMOCIONES
+   ======================================== */
+.promo-carousel {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.promo-carousel .carousel-item img {
+  border-radius: var(--border-radius);
+  height: 500px;
+  object-fit: cover;
+}
+
+.promo-carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+}
+
+.promo-carousel .carousel-caption h5 {
+  color: var(--brand-secondary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.promo-carousel .carousel-indicators [data-bs-target] {
+  background-color: var(--brand-primary);
+  border: 2px solid var(--text-light);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.whatsapp-cta {
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ========================================
+   UBICACIÓN Y CONTACTO
+   ======================================== */
+.map-container {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.map-container iframe {
+  border-radius: var(--border-radius);
+  filter: grayscale(20%) brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe {
+  filter: grayscale(0%) brightness(1);
+}
+
+.contact-title {
+  color: var(--brand-secondary);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item {
+  margin-bottom: 1rem;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.contact-item a {
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: var(--brand-primary);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer-custom {
+  background-color: var(--bg-footer);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: 2rem 0;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--brand-primary);
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px;
+  }
+  
+  .hero {
+    min-height: 60vh;
+    padding-top: 80px;
+  }
+  
+  .hero-title {
+    font-size: 2.25rem !important;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .navbar-nav .nav-link {
+    margin: 5px 0;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .promo-carousel .carousel-item img {
+    height: 300px;
+  }
+  
+  .promo-carousel .carousel-caption {
+    padding: 1rem;
+  }
+  
+  .menu-item {
+    padding: 15px;
+  }
+  
+  .contact-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 50vh;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .card-custom .card-body {
+    padding: 1rem;
+  }
+  
+  .promo-carousel .carousel-item img {
+    height: 250px;
+  }
+}
+
+/* ========================================
+   UTILIDADES ADICIONALES
+   ======================================== */
+.text-brand {
+  color: var(--brand-primary) !important;
+}
+
+.bg-brand {
+  background-color: var(--brand-primary) !important;
+}
+
+.border-brand {
+  border-color: var(--brand-primary) !important;
+}
+
+.shadow-brand {
+  box-shadow: 0 4px 15px rgba(230, 108, 44, 0.2) !important;
+}
+
+/* Scroll suave para toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejora la legibilidad en dispositivos de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ================================
+   Ajustes específicos para el Bar
+   ================================ */
+.bar-list-header {
+  color: #dee2e7; /* gris muy oscuro para mejor contraste */
+  font-weight: 700;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: transparent; /* asegurar fondo transparente */
+}
+
+.bar-list-header .d-flex {
+  gap: 1.25rem;
+}
+
+/* Asegurar que las etiquetas Botella/Copa sean claras */
+.bar-list-header .d-flex > div {
+  color: var(--text-light) !important;
+  font-weight: 700;
+}
+
+/* Color para el título 'Bebida' en los encabezados del Bar (coincide con #bar-titulo) */
+.bar-list-header > div:first-child {
+  color: #f8f9fa !important;
+  font-weight: 700;
+}
+
+.bar-item-prices .menu-price {
+  color: #dee2e7; /* color principal para precios */
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 56px;
+  text-align: right;
+}
+
+/* Opcional: colores distintos para botella y copa */
+.bar-item-prices .menu-price.bottle { color: #e0e5ec; }
+.bar-item-prices .menu-price.glass  { color: #e0e5ec; }
+
+/* Tarjeta destacada (izquierda) */
+.bar-prices { gap: 1rem; }
+#bar-price-bottle, #bar-price-glass {
+  color: #dee2e7;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* Forzar buen contraste en móviles */
+@media (max-width: 576px) {
+  .bar-list-header { font-size: 0.85rem; }
+  .bar-item-prices .menu-price { font-size: 0.9rem; min-width: 48px; }
+}
+
+/* Etiquetas dentro de la tarjeta destacada del Bar */
+.bar-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: none;
+  margin-right: .25rem;
+}
+
+/* Hacer el título de la tarjeta del Bar más visible */
+#bar-titulo {
+  color: #f8f9fa !important; /* Blanco suave */
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(30, 26, 26, 0.6);
+}
