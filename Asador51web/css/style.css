@@ -376,40 +376,170 @@ a:hover {
 }
 
 /* ========================================
-   CARRUSEL DE PROMOCIONES
+   CARRUSEL DE PROMOCIONES - SIMPLIFICADO
    ======================================== */
+.carousel-wrapper {
+  max-width: 420px;
+  max-height: 900px;
+  margin: 0 auto;
+}
+
 .promo-carousel {
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.promo-carousel .carousel-item {
+  width: 400px;
+  height: 900px;
 }
 
 .promo-carousel .carousel-item img {
-  border-radius: var(--border-radius);
-  height: 500px;
+  width: 400px;
+  height: 750px;
+  object-fit:none;
+  object-position: center;
+}
+
+.promo-carousel .video-container {
+  width: 450px;
+  height: 1200px;
+  background: #000;
+}
+
+.promo-carousel .video-container video {
+  width: 100%;
+  height: 750px;
   object-fit: cover;
 }
 
+.promo-carousel .video-container img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+/* Asegurar que Bootstrap no interfiera */
+.promo-carousel .carousel-item > img,
+.promo-carousel .carousel-item > .video-container {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Override específico para nuestro carrusel */
+.promo-carousel .carousel-item > img {
+  height: 650px;
+  object-fit: fill;
+}
+
+.promo-carousel .carousel-item > .video-container {
+  height: 750px;
+}
+
 .promo-carousel .carousel-caption {
-  background: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
   border-radius: 12px;
-  padding: 1.5rem;
-  backdrop-filter: blur(5px);
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
 }
 
 .promo-carousel .carousel-caption h5 {
   color: var(--brand-secondary);
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.promo-carousel .carousel-caption p {
+  color: var(--text-light);
+  font-size: 1rem;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+.promo-carousel .carousel-indicators {
+  bottom: 1rem;
 }
 
 .promo-carousel .carousel-indicators [data-bs-target] {
   background-color: var(--brand-primary);
   border: 2px solid var(--text-light);
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
+  margin: 0 6px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
 }
+
+.promo-carousel .carousel-indicators [data-bs-target].active {
+  opacity: 1;
+  transform: scale(1.2);
+  background-color: var(--brand-secondary);
+}
+
+.promo-carousel .carousel-control-prev,
+.promo-carousel .carousel-control-next {
+  width: 8%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  border-radius: 0 12px 12px 0;
+  transition: all 0.3s ease;
+}
+
+.promo-carousel .carousel-control-next {
+  border-radius: 12px 0 0 12px;
+}
+
+.promo-carousel .carousel-control-prev:hover,
+.promo-carousel .carousel-control-next:hover {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+}
+
+.promo-carousel .carousel-control-prev-icon,
+.promo-carousel .carousel-control-next-icon {
+  width: 3rem;
+  height: 3rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Transiciones suaves para el carrusel */
+.promo-carousel .carousel-item {
+  transition: transform 0.6s ease-in-out;
+}
+
+.promo-carousel .carousel-item img {
+  transition: transform 0.3s ease;
+}
+
+.promo-carousel:hover .carousel-item img {
+  transform: scale(1.02);
+}
+
+/* Mejora de accesibilidad y UX */
+.promo-carousel .carousel-item:focus {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* Efecto de carga para las imágenes */
+.promo-carousel .carousel-item img {
+  background: linear-gradient(135deg, #2d3748, #4a5568);
+  background-size: 200% 200%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+
 
 .whatsapp-cta {
   font-weight: 600;
@@ -548,12 +678,28 @@ a:hover {
     max-width: 280px;
   }
   
-  .promo-carousel .carousel-item img {
-    height: 300px;
+  .promo-carousel .carousel-item,
+  .promo-carousel .carousel-item > img,
+  .promo-carousel .carousel-item > .video-container,
+  .promo-carousel .video-container,
+  .promo-carousel .video-container video {
+    height: 350px;
   }
   
   .promo-carousel .carousel-caption {
-    padding: 1rem;
+    padding: 1.5rem;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  .promo-carousel .carousel-caption h5 {
+    font-size: 1.25rem;
+  }
+  
+  .promo-carousel .carousel-control-prev,
+  .promo-carousel .carousel-control-next {
+    width: 12%;
   }
   
   .menu-item {
@@ -582,8 +728,37 @@ a:hover {
     padding: 1rem;
   }
   
-  .promo-carousel .carousel-item img {
-    height: 250px;
+  .promo-carousel .carousel-item,
+  .promo-carousel .carousel-item > img,
+  .promo-carousel .carousel-item > .video-container,
+  .promo-carousel .video-container,
+  .promo-carousel .video-container video {
+    height: 280px;
+  }
+  
+  .promo-carousel .carousel-caption {
+    padding: 1rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .promo-carousel .carousel-caption h5 {
+    font-size: 1.1rem;
+  }
+  
+  .promo-carousel .carousel-caption p {
+    font-size: 0.9rem;
+  }
+  
+  .promo-carousel .carousel-control-prev,
+  .promo-carousel .carousel-control-next {
+    width: 15%;
+  }
+  
+  .promo-carousel .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -686,5 +861,5 @@ html {
 #bar-titulo {
   color: #f8f9fa !important; /* Blanco suave */
   font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(30, 26, 26, 0.6);
+  text-shadow: 1px 1px 2px rgba(30, 26, 26, 0.6)
 }

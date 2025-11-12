@@ -143,10 +143,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // CARRUSEL DE PROMOCIONES
 // ========================================
 
-// Configuración adicional del carrusel (opcional)
+// Configuración adicional del carrusel con manejo de video
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.querySelector('#promoCarousel');
     if (carousel) {
+        let videos = carousel.querySelectorAll('video');
+        
         // Pausar carrusel al hacer hover
         carousel.addEventListener('mouseenter', function() {
             const carouselInstance = bootstrap.Carousel.getInstance(carousel);
@@ -160,6 +162,77 @@ document.addEventListener('DOMContentLoaded', function() {
             const carouselInstance = bootstrap.Carousel.getInstance(carousel);
             if (carouselInstance) {
                 carouselInstance.cycle();
+            }
+        });
+        
+        // Manejar reproducción de video según el slide activo
+        carousel.addEventListener('slid.bs.carousel', function(e) {
+            // Pausar todos los videos
+            videos.forEach(video => {
+                video.pause();
+                video.currentTime = 0; // Reiniciar al inicio
+            });
+            
+            // Reproducir video del slide activo si existe
+            const activeSlide = e.target.querySelector('.carousel-item.active');
+            const activeVideo = activeSlide ? activeSlide.querySelector('video') : null;
+            
+            if (activeVideo) {
+                // Pausar el carrusel automático cuando hay video
+                const carouselInstance = bootstrap.Carousel.getInstance(carousel);
+                if (carouselInstance) {
+                    carouselInstance.pause();
+                }
+                
+                // Reproducir el video
+                activeVideo.play().catch(error => {
+                    console.log('Error reproduciendo video:', error);
+                });
+                
+                // Reanudar carrusel cuando termine el video
+                activeVideo.addEventListener('ended', function() {
+                    if (carouselInstance) {
+                        carouselInstance.cycle();
+                        carouselInstance.next(); // Avanzar al siguiente slide
+                    }
+                });
+            }
+        });
+        
+        // Controles de video con clic
+        videos.forEach(video => {
+            video.addEventListener('click', function(e) {
+                e.stopPropagation(); // Evitar que active controles del carrusel
+                
+                if (this.paused) {
+                    this.play().catch(error => {
+                        console.log('Error reproduciendo video:', error);
+                    });
+                } else {
+                    this.pause();
+                }
+            });
+            
+            // Mostrar controles al hacer hover en el video
+            video.addEventListener('mouseenter', function() {
+                this.setAttribute('controls', 'controls');
+            });
+            
+            video.addEventListener('mouseleave', function() {
+                // Mantener controles si el video está pausado por el usuario
+                if (!this.paused) {
+                    this.removeAttribute('controls');
+                }
+            });
+        });
+        
+        // Inicializar: pausar todos los videos excepto el del slide activo
+        const initialActiveSlide = carousel.querySelector('.carousel-item.active');
+        const initialVideo = initialActiveSlide ? initialActiveSlide.querySelector('video') : null;
+        
+        videos.forEach(video => {
+            if (video !== initialVideo) {
+                video.pause();
             }
         });
     }
