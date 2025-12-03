@@ -1,0 +1,97 @@
+============================================
+OPTIMIZACIÓN DE IMÁGENES - ASADOR 51
+============================================
+
+Fecha: Noviembre 12, 2024
+Herramienta: ImageMagick (mogrify)
+Configuración: -strip -quality 85 -resize '1920x1920>'
+
+RESULTADOS:
+============================================
+
+Banner 2x1 Aperol spritz.jpg:
+  ANTES: 392 KB
+  DESPUÉS: 232 KB
+  AHORRO: 160 KB (40.8% reducción)
+
+Banner 2x1 Aperol spritz2.jpg:
+  ANTES: 36 KB
+  DESPUÉS: 40 KB
+  CAMBIO: +4 KB (ya estaba optimizada)
+
+promo_lunes_hamburguesa.jpg:
+  ANTES: 576 KB
+  DESPUÉS: 332 KB
+  AHORRO: 244 KB (42.4% reducción)
+
+promo_lunes_hamburguesa2.jpg:
+  ANTES: 32 KB
+  DESPUÉS: 32 KB
+  CAMBIO: 0 KB (ya estaba optimizada)
+
+AHORRO TOTAL: ~404 KB (38% reducción promedio)
+
+============================================
+CONFIGURACIÓN APLICADA:
+============================================
+
+1. -strip: Elimina metadatos EXIF innecesarios
+2. -quality 85: Balance óptimo entre calidad y tamaño
+3. -resize '1920x1920>': Limita dimensión máxima a 1920px
+
+BENEFICIOS:
+============================================
+
+✅ Carga más rápida del sitio
+✅ Menor uso de ancho de banda
+✅ Mejor experiencia en móviles
+✅ Mejor SEO (page speed)
+✅ Menor costo de hosting
+
+RECOMENDACIONES ADICIONALES:
+============================================
+
+1. CONVERTIR A WEBP:
+   - Formato más moderno y eficiente
+   - Hasta 30% más compresión que JPEG
+   - Comando: cwebp -q 85 imagen.jpg -o imagen.webp
+
+2. RESPONSIVE IMAGES:
+   - Crear versiones en múltiples tamaños
+   - Usar atributo srcset en HTML
+   - Ejemplo: 
+     <img srcset="imagen-400w.jpg 400w,
+                  imagen-800w.jpg 800w,
+                  imagen-1200w.jpg 1200w"
+          sizes="(max-width: 600px) 400px,
+                 (max-width: 1200px) 800px,
+                 1200px"
+          src="imagen-800w.jpg" alt="...">
+
+3. LAZY LOADING:
+   - Ya implementado en el código
+   - Atributo loading="lazy" en imágenes
+   - Intersection Observer para imágenes críticas
+
+4. CDN:
+   - Considerar usar Cloudflare, CloudFront o similar
+   - Distribución geográfica más rápida
+   - Compresión adicional automática
+
+5. OPTIMIZACIÓN DEL VIDEO:
+   - Video actual: promocional-asador51.mp4
+   - Considerar reducir bitrate si es muy grande
+   - Crear versión poster (thumbnail) optimizada
+   - Usar formato WebM como alternativa a MP4
+
+============================================
+BACKUP:
+============================================
+
+Los archivos originales están respaldados en:
+/img/originales/
+
+Para restaurar:
+cp img/originales/*.jpg img/
+
+============================================
