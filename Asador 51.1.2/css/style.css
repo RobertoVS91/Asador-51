@@ -938,6 +938,10 @@ img {
     --section-padding: 50px;
   }
 
+  body {
+    background-color: var(--bg-dark);
+  }
+
   /* Social sidebar móvil */
   .social-sidebar {
     right: 10px;
@@ -1150,6 +1154,10 @@ img {
     --section-padding: 40px;
   }
 
+  body {
+    background-color: var(--bg-dark);
+  }
+
   .navbar-logo {
     height: 40px;
     width: 40px;
@@ -1236,6 +1244,10 @@ img {
    MÓVILES MUY PEQUEÑOS
    ==================== */
 @media (max-width: 380px) {
+  body {
+    background-color: var(--bg-dark);
+  }
+
   .navbar-logo {
     height: 35px;
     width: 35px;
