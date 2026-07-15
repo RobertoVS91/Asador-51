@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - Flower Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>🌸 Flower Home</h1>
+                <nav>
+                    <a href="index.html" class="nav-link">Tienda</a>
+                    <a href="admin.html" class="nav-link active">Administración</a>
+                    <div class="user-info">
+                        <span>👤 <span id="current-user">Usuario</span></span>
+                        <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="admin-section">
+            <h2>Panel de Administración</h2>
+            <p>Agrega nuevos productos al catálogo</p>
+
+            <!-- Add Product Form -->
+            <div class="admin-form">
+                <h3>Agregar Nuevo Producto</h3>
+                <form id="add-product-form">
+                    <div class="form-group">
+                        <label for="product-name">Nombre del Producto *</label>
+                        <input type="text" id="product-name" required placeholder="Ej: Ramo de Rosas Rojas">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-price">Precio ($) *</label>
+                        <input type="number" id="product-price" step="0.01" min="0" required placeholder="Ej: 25.99">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-description">Descripción</label>
+                        <textarea id="product-description" rows="3" placeholder="Descripción del producto..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-image">Imagen del Producto *</label>
+                        <input type="file" id="product-image" accept="image/*" required>
+                        <small>Formatos aceptados: JPG, PNG, GIF</small>
+                    </div>
+
+                    <div class="form-group">
+                        <div id="image-preview" class="image-preview">
+                            <!-- Preview will appear here -->
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                </form>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="admin-orders">
+                <h3>Pedidos Recibidos <span id="pending-orders-count" class="badge">0</span></h3>
+                <div id="orders-list" class="orders-list">
+                    <!-- Orders will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Current Products -->
+            <div class="admin-products">
+                <h3>Productos Actuales</h3>
+                <div id="admin-product-list" class="admin-product-list">
+                    <!-- Current products will be displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Edit Product Modal -->
+    <div id="edit-product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Producto</h2>
+                <button class="close-btn" id="close-edit-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-product-form">
+                    <input type="hidden" id="edit-product-id">
+                    
+                    <div class="form-group">
+                        <label for="edit-product-name">Nombre del Producto *</label>
+                        <input type="text" id="edit-product-name" required placeholder="Ej: Ramo de Rosas Rojas">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-product-price">Precio ($) *</label>
+                        <input type="number" id="edit-product-price" step="0.01" min="0" required placeholder="Ej: 25.99">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-product-description">Descripción</label>
+                        <textarea id="edit-product-description" rows="3" placeholder="Descripción del producto..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-product-image">Cambiar Imagen</label>
+                        <input type="file" id="edit-product-image" accept="image/*">
+                        <small>Deja vacío para mantener la imagen actual</small>
+                    </div>
+
+                    <div class="form-group">
+                        <div id="edit-image-preview" class="image-preview">
+                            <!-- Current image preview will appear here -->
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Flower Home. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
